@@ -1,0 +1,108 @@
+% Cameron Dart - Math 444 - Homework 1 - Summer 2017
+% Section 1.1: 14, 22
+% Section 1.2: 7, 17
+% Section 1.3: 12
+% Use Lemma 2 from class to prove Theorem 1.3.9(a). Do not use Appendix A.
+
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+
+\newenvironment{claim}[2][Claim]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+
+\begin{document}
+	\title{Math 444 - Homework 1}
+	\author{Cameron Dart}
+	\maketitle
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Nailed it
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{claim}{1.1.14}
+		If $f: A \rightarrow B$ and $E,F$ are subsets of $A$ then $f(E \cup F) = f(E) \cup f(F)$ and $f(E \cap F) \subseteq f(E) \cap f(F)$
+ 	\end{claim}
+	\begin{proof}
+		In order to prove $f(E \cup F) = f(E) \cup f(F)$ it suffices to show $f(E \cup F) \subseteq f(E) \cup f(F)$ and $f(E) \cup f(F) \subseteq f(E \cup F)$.
+		First, suppose $y \in f(E \cup F)$  then there exists a $x \in (E \cup F)$ so that $y = f(x)$. If $y \in f(E)$, then $x \in E$. Likewise for $F$, if $y \in f(F)$ and $x \in F$. Hence we have shown, $f(E \cup F) \subseteq f(E) \cup f(F)$. Now we must show $f(E) \cup f(F) \subseteq f(E \cup F)$. Next, suppose $y \in f(E \cup F)$ so either $y \in f(E)$ or $y \in f(F)$. Since, $f(E) \subseteq f(E \cup F)$ and $f(F) \subseteq f(E \cup F)$, it must be true that $y \in f(E \cup F)$. Thus, we have shown each set contains the other so $f(E \cup F) = f(E) \cup f(F)$.\\\\
+		Clearly, $(E \cap F) \subseteq E$ and $(E \cap F) \subseteq F$, it follows that $f(E \cap F) \subseteq f(E)$ and $f(E \cap F) \subseteq f(F)$. So $f(E \cap F) \subseteq f(E) \cap f(F)$
+	\end{proof}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{claim}{1.1.22}
+		Let $f: A \rightarrow B$ and $g: B \rightarrow C$ be functions. \\
+		If $g \circ f$ is injective, then $f$ is injective.\\
+		If $g \circ f$ is surjective, then $g$ is surjective.	
+	\end{claim}
+	\begin{proof}
+		First, we will show if $g \circ f$ is injective, then $f$ is injective. Let $x_1, x_2 \in A$.\\ So $g \circ f = g(f(x_1)) = g(f(x_2)) = g \circ f (x_2)$ which implies $x_1 = x_2$ by the injectivity of $g \circ f$. Hence, $f$ must be injective.\\
+		Next, assume that $g \circ f$ is surjective. Let $c \in C$. Since $g \circ f$ is surjective there exists an $a \in A$ so that $(g \circ f)(a) = g(f(a)) = c$. If we let $y = f(a)$ then $g(y) = c$. Therefore, $g$ must be surjective.
+	\end{proof}
+	
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		% nailed it
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{claim}{1.2.7}
+		$5^{2n} - 1$ is divisible by $8$ for all $n \in \N$
+	\end{claim}
+	\begin{proof}
+		Let $P(n)$ be the statement that 8 divides $5^{2n} - 1$ for any natural number $n$.\\
+		$P(1)$ holds since $5^{2} -  1 = 24$ and $8$ divides $24$.
+		\\Assume for all $n \leq k$ that $5^{2n} - 1$ is divisible by $8$.
+		\\Consider $n = k + 1$.
+		\begin{align*}
+			5 ^ {2(k + 1)} - 1 & =  5 ^ {2k + 2} - 1 \\
+			%& = 5 ^ {k} * 5 ^ {k} * 5 - 1 \\
+			& = 5 ^ {2k} * 5 ^ {2} - 1\\ 
+			& = 5 ^ {2k} * 24\\
+			& = 8 * (3 * 5 ^ {2k})\\
+			& = 8 * m
+		\end{align*}
+		Hence, $P(n)$ holds true for all $n \in \N$ so our claim must be true.
+	\end{proof}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{claim}{1.2.17}
+		Find the largest natural number $m$ so that $n^3 - n$ is divisible by $m$ for all $n \in \N$ 
+	\end{claim}
+	\begin{proof}
+		Suppose $f(n) = n^3 - n$. $f(1) = 0, f(2) = 6, f(3) = 24, f(4) = 62, f(5) = 120, ...$. I claim that $m = 6$ is the largest number that divides $n^3 - n$ for all $n$ and will prove so using an inductive argument.\\
+		Consider $n=1$. Since $f(1) = 0$ and $6 | 0$ our base case holds true.\\
+		Now assume that $6$ divides $n^3 - n$ for all $n \leq p$ where $p \in \mathbb{N}$ and is greater than $1$.\\
+		Consider $n = p + 1$.
+		\begin{align*}
+			n^3 - n & = (p + 1)^3 - (p + 1)\\
+			& = (p^3 + 3p^2 + 3p + 1) - (p+1)\\
+			& = (p^3 - p) + (3p^2 + 3p) 
+		\end{align*}
+	By our inductive hypothesis $p^3 - p$ is divisible by $6$ and now consider $3p^2 + 3p$\\
+	\begin{align*}
+		3p^2 + 3p & = 3 (k) (k+1).
+	\end{align*}
+	Now either $k$ or $k + 1$  is even so we can factor a $2$ out of $k$ or $k+1$ and it clearly becomes divisible by $6$. Thus, we have shown that $6$ is the largest number that divides $n^3 - n$ for all $n$ .
+	\end{proof}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{claim}{1.3.12}
+		If a set $S$ has $n$ elements, then $\mathcal{P}(S)$ has $2^{n}$ elements
+	\end{claim}
+	\begin{proof}
+		If $S$ is a set with one element, then $P(S)$ is a set with two elements. Namely, the only element in $S$ and $\emptyset$. Suppose for all sets $S$ with $n = 1, 2, ..., k$ elements that $P(S)$ contains $2 ^ n$ elements. Now consider any set S with cardinality $n = k + 1$. We split $S$ into the union of a set of size $k$ and a set of size $1$. By our inductive hypothesis, our set of size $k$ has a powerset of size $2^k$ and by our base case the set with $1$ element has a powerset of size $2$. Now, we make combinations of every element in both sets and we have $2^k$ and $ 2^1$ elements. Hence there are $2^k * 2 = 2^{k+1}$ elements in our powerset of $S$ which has $k+1$ elements.
+	\end{proof}
+	% 
+	%\begin{proof}
+		%For each element we have the choice to include it in a set or not.\\ Thus we have %$\prod_{i = 1}^{n} 2$  possible sets, or $2^n$.
+	 %\end{proof}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{claim}{1.3.9a}
+		Suppose $S, T$ are sets that $T \subseteq S$. If $S$ is countable, then $T$ is countable.
+	\end{claim}
+	\begin{proof}
+		By assumption our $S$ is countable so by Definition 1.3.6 it is either denumerable or finite. Hence, we must consider these two cases. If $S$ is a finite, then $T$ is a finite set by Theorem 1.3.5. and therefore countable.\\
+		Now consider the case where $S$ is countably infinite. By lemma 2 there exists a surjection $f: N \rightarrow S$. Since $T \subseteq S$ all $t \in T$ is also in $S$. It follows that for all $t \in T$ that there exists an $n \in \N$ so that $f(n) = t$. Hence, there is a surjection from $\N$ onto $S$.
+		%\\\\If $S$ is denumerable, then there exists a bijection $\phi$ from S onto $\N$. Thus, $\phi (S) \subseteq \N$. Since $T \subseteq S$, it follows the restriction of $\phi$ to T must also be a subset of $\N$. Hence, $T$ is countable. 
+	\end{proof}
+\end{document}

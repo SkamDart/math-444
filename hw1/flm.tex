@@ -1,0 +1,39 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+
+\newenvironment{claim}[2][Claim]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+
+\begin{document}
+	\title{For the Love of Math}
+	\author{Cameron Dart}
+	\maketitle
+
+	\begin{claim}{}
+		$\sum_{i = 1}^{n} 2i - 1 = n^2$
+	\end{claim}
+	\begin{proof}
+		Let $P(i)$ be the claim that the sum of the first $i$ odds is equal to $i^2$. We will prove by induction on $i$ that $P(i)$ holds for all $i = 1,2,...,n$. There are two cases to consider.\\
+		First, let $i = 1$
+		\begin{align*}
+			\sum_{i = 1}^{1} 2i - 1 & = 2 (1) - 1 \\
+			&= 1 \\
+			&= (1)^2
+		\end{align*}
+		Now assume for all $i < k + 1$ that our claim holds true.\\ 
+		Lastly,  suppose $i = k + 1$.
+		\begin{align*}
+			\sum_{i = 1} ^ {k + 1} 2i - 1 &= \left(\sum_{i = 1} ^ {k} 2i - 1 \right)+ (2(k + 1) - 1) \\
+			&= (k^2) + (2k + 1) \\
+			&= (k + 1) ^ 2
+		\end{align*} 
+		As shown by induction on $i$, the sum of the first $n$ odd numbers is $n^2$
+		% want to show (n + 1)^2
+		% (n+1)^2 = n^2 + 2n + 1)
+	\end{proof}
+\end{document}

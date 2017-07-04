@@ -1,0 +1,128 @@
+% Cameron Dart - Math 444 - Homework 2 - Summer 2017
+%Section 2.1: 4, 8
+%Section 2.2: 5, 17
+%Section 2.3: 9, 11
+% ThursdayHandout
+
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+
+\newenvironment{claim}[2][Claim]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+
+\begin{document}
+	\title{Math 444 - Homework 2}
+	\author{Cameron Dart}
+	\maketitle
+	\begin{claim}{2.1.4}
+		If $a \in \R$ satisfies $a * a = a $ then $a = 0$ or $a = 1$.
+ 	\end{claim}
+	\begin{proof}
+	Suppose $a \in \R$. By \textbf{Theorem 2.1.8a} either $a^2 > 0$ or $a = 0$ and $a^2 = 0$. Hence, $a * a = a$ is satisfied if $a = 0$.\\
+	Additionally, using our hypothesis, \textbf{M3}, and \textbf{M4}, we get \\
+	\begin{align*}
+		a a  = a \implies a  a \left(\frac{1}{a}\right) = a \left( \frac{1}{a}\right ) \implies a = 1
+	\end{align*}
+	Thus we have shown if $ a a = a$, then $a = 0$ or $a = 1$.
+	\end{proof}
+
+	\begin{claim}{2.1.8a}
+	If $x, y$ are rational numbers, then $x + y$ and $xy$ are rational numbers.\\
+	If $x$ is a rational number and $y$ is irrational, then $x + y$ is irrational.\\
+	If, in addition, $x \neq 0$, then $xy$ is an irrational number.
+	\end{claim}
+	\begin{proof}
+		Suppose $m,n \in \mathbb{Q}$. By definition of rational number $m = \frac{a}{b}$ and $n = \frac{k}{l}$ where $a, b, k, l \in \Z$ and $b, l \neq 0$. We know $\frac{1}{b}$ and $\frac{1}{l}$ exist by \textbf{M4}
+		\begin{align*}
+			m n = \frac{a}{b} \frac{k}{l} = ab^{-1}kl^{-1} = (ak)(b^{-1}l^{-1})
+		\end{align*}
+	Since $b,l$ are nonzero integers and integers are closed under multiplication we can show,
+	\begin{align*}
+		(ak)(b^{-1}l^{-1}) = \frac{ak}{bl} = \frac{s}{t} \in \mathbb{Q}
+	\end{align*}
+	Hence, rational numbers are closed under addition.\\
+	Now consider $m + n$
+	\begin{align*}
+		n + m = \frac{a}{b} + \frac{k}{l} = \frac{al}{lb} + \frac{kb}{lb} = \frac{al + kb}{lb} \in \mathbb{Q}
+	\end{align*}
+	\end{proof}
+	\begin{claim}{2.1.8b}
+		Suppose $x \in \mathbb{Q}$ and $y \in \R \backslash \mathbb{Q}$. Then $x + y$ and $xy$ are in $\R \backslash \mathbb{Q}$.
+	\end{claim}
+	\begin{proof}
+	Suppose to contradiction that $x + y$ is rational. Since $Q$ is a field $-x$ exists and the sum of two rational numbers is a rational. However, we arrive at a contradiction because $x + y - x = y$ which is an irrational number. Hence, the addition of an irrational and a rational number is irrational.\\
+	Now suppose $x$ is nonzero and to contradiction that $xy$ is rational. First, let $x = \frac{c}{d}$ for $c,d \neq 0$ and $r = \frac{a}{b}$
+	\begin{align*}
+		xy &= r \in \mathbb{Q}\\
+		\frac{c}{d}y &= \frac{a}{b}\\
+		y &= \frac{ac}{bd}
+	\end{align*} 
+	Thus, we have arrived at a contradiction. Hence the product of a rational and irrational is irrational.
+	\end{proof}
+	\begin{claim}{2.2.5}
+		If $a < x < b$ and $a < y < b$, then $|x - y| < b - a$.
+	\end{claim}
+	\begin{proof}
+		By definition $|x - y| < b - a \implies -(b - a) < x  - y < b - a$.  Consider the first expression
+		\begin{equation}
+		a < x < b
+		\end{equation}
+		If we multiply $a < y < b$ by $-1$ we get
+		\begin{equation}
+		-b < -y < -a
+		\end{equation}
+		Now we add $(1) + (2)$.\\
+		\begin{align*}
+		a-b < x -y < b - a \implies -(b - a) < x - y < b - a = |x - y| < (b-a)
+		\end{align*}
+		So our claim holds true.
+	\end{proof}
+
+\begin{claim}{2.2.17}
+	If $a,b \in \R$ and $a \neq b$, then there exists $\epsilon$-neighborhoods $U$ of $a$ and $V$ of $b$ such that $U \cap V = \emptyset$.
+\end{claim}
+\begin{proof}
+	Without the loss of generality, assume $a < b$. Suppose $x = a + \epsilon$ the largest element in $U$ and $y = b - \epsilon$ the largest element in $V$. We can say that $U \cap V = \emptyset$ if $x < y$.
+	\begin{align*}
+		&x < y \\
+		a + \epsilon &< b - \epsilon\\
+		a + 2 \epsilon &< b\\
+		2 \epsilon &< b - a\\
+		\epsilon &< \frac{b - a}{2}
+	\end{align*}
+	Hence, $U \cap V = \emptyset$ for any $\epsilon \geq \frac{b - a}{2}$.
+\end{proof}
+
+\begin{claim}{2.3.9}
+	Let $S \subseteq \R$ be nonempty. If $u = \text{sup } S$, then for every $n \in N$ the number $u - 1/n$ is not an upper bound of $S$ but $u + 1/n$ is an upper bound of $S$. 
+\end{claim}
+\begin{proof}
+	For any $n \in \N$. $\frac{1}{n} > 0$.
+	\begin{align*}
+		\frac{1}{n} &> 0 \\
+		u + \frac{1}{n} & > u\\
+		u & > u - \frac{1}{n}
+	\end{align*}
+	Additionally,
+	\begin{align*}
+	\frac{1}{n} &> 0 \\
+	u + \frac{1}{n} & > n
+	\end{align*}
+	So by definition $u - 1/n$ is not an upper-bound and $u + 1/n$ is an upper-bound for S.
+\end{proof}
+
+\begin{claim}{2.3.11}
+	Suppose $S$ be a bounded set in $\R$ and let $S_0$ be a nonempty subset of $S$.\\Show inf $S \leq$ inf $S_0 \leq$ sup $S_0 \leq$ sup $S$ 
+\end{claim}
+\begin{proof}
+%Since $S$ and $S_0$ are both bounded sets there exist $\inf S, \inf S_0,  \sup S_0, \text{and} 
+ %\sup S$.\\
+ First, we will show $\inf S \leq \inf S_0$. Since $S,S_0$ are bounded below, there exists $w,w_0$ that are infimums of $S, S_0$ respectively. If $S_0$ is contained in $S$, then $w$ has to be a lower bound for $S_0$ by definition of infimum. Hence, $\inf S \leq \inf S_0$. Let $s_0 \in S_0$. It follows that $\inf S_0 \leq s_0 \leq \sup S_0$. Hence, $\inf S_0 \leq \sup S_0$.
+Finally, let that $u = \sup S$ and $u_0 = \sup S_0$. Notice that every element in $S_0$ is also an element of $S$. Thus, $u_0$ must be less than or equal to the least upper bound for $S$, or $u$. So $\sup S_0 \leq \sup S$. Hence, inf $S \leq$ inf $S_0 \leq$ sup $S_0 \leq$ sup $S$ 
+\end{proof}
+\end{document}

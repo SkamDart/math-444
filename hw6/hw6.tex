@@ -1,0 +1,105 @@
+% Cameron Dart - Math 444 - Homework 5 - Summer 2017
+% Section 3.3: 2, 
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{enumitem} 
+\usepackage{cancel}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\nifty}{\lim_{n \rightarrow \infty}}
+\newenvironment{claim}[2][Claim]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+
+\begin{document}
+	\title{Math 444 - Homework 4}
+	\author{Cameron Dart}
+	\maketitle
+
+\begin{claim}{3.3.2}
+	Given $x_{n+1} := 2 - \frac{1}{n} $ where $x_1 > 1$, $x_{n+1}$ is bounded, monotone and converges to $1$ 
+\end{claim}
+
+\begin{proof}
+		First, we prove that $x_{n+1}$ is monotonically decreasing by showing $x_n > x_{n + 1}$.
+		Note, if $x_1 > 1$, then $\frac{1}{x_1} < 1$.
+	\begin{equation}
+	x_n - x_{n + 1} = x_n - (2 - \frac{1}{x_n}) = x_n + \frac{1}{x_n} - 2 = \frac{x_n^{2} + 1}{x_n} - 2 > 0
+	\end{equation}
+	Next, we prove by induction on $n$ that $x_{n+1}$ is bounded below by $1$. Consider $n = 1$. So $x_2 = 2 - \frac{1}{x_1} > 1$. Assume it holds true for all $n \leq k$ that $x_{n+1} > 1$. Now let $n = k$, so $x_{k+1} = 2 - \frac{1}{x_n} > 1$.
+	Lastly, we show that $x_{n+1}$ is bounded above by $2$. Again we use the fact that $\frac{1}{x_n} < 1$ 
+	\begin{equation}
+		x_{n + 1} = 2 - \frac{1}{x_n} < 2
+	\end{equation}
+	Thus, we have shown $1 < x_{n +1} < 2$  and $x_n$ is monotonically decreasing so by the Monotone Convergence Theorem, it converges to its infimum of 1
+\end{proof}
+
+\begin{claim}{3.3.10}
+	The series $y_n := \frac{1}{n + 1} + \frac{1}{n + 2} + ... + \frac{1}{2n}$ converges.
+\end{claim}
+\begin{proof}
+	If, $y_n := \frac{1}{n + 1} + \frac{1}{n + 2} + ... + \frac{1}{2n}$, then
+	\begin{equation}
+		y_{n + 1} := \frac{1}{n + 2} + \frac{1}{n + 3} + ... + \frac{1}{2n + 1} + \frac{1}{2n + 2}
+	\end{equation}
+	Now, we show that $y_n$ is monotonically increasing by considering two arbitrary consecutive elements. $y_{n+1} - y_n$
+	\begin{align}
+		y_{n+1} & = \cancel{\frac{1}{n + 2}} + \cancel{\frac{1}{n + 3}} + ... + \cancel{\frac{1}{2n}}  + \frac{1}{2n + 1} + \frac{1}{2n + 2}\\
+		 - y_n   &  = -\frac{1}{n + 1} - \cancel{\frac{1}{n + 2}} - ... - \cancel{\frac{1}{2n}}
+	\end{align}
+	So it follows that,
+	\begin{align*}
+		y_{n+1} - y_n &= \frac{1}{2n + 1} + \frac{1}{2n+2} - \frac{1}{n+1}\\
+							 &= \frac{1}{2n+1} - \frac{1}{2n+2}\\
+							 &= \frac{1}{(2n+1)(2n+2)} > 0 \,\,\,\,\, \forall n \in \N
+	\end{align*}
+	Thus, $y_n$ is monotonically increasing. Next, we show that $y_n$ is bounded above and below by comparing the series of the smallest and largest element in $y_n$ with $y_n$ itself.
+	\[ y_n = \sum_{k = n + 1}^{2n} \frac{1}{k} < \sum_{i = 1}^{n} \frac{1}{n + 1} = \frac{n}{n+1} = 1 - \frac{1}{n + 1} < 1 \]
+	\[ y_n = \sum_{k = n + 1}^{2n} \frac{1}{k} > \sum_{i = 1}^{n} \frac{1}{2n} = \frac{n}{2n} = \frac{1}{2} \]
+
+	Finally, we apply the \textbf{MCT} and $y_n$ converges
+\end{proof}
+
+\begin{claim}{3.4.4a}
+	The sequence $x_n=(1 -(1)^n + \frac{1}{n}))$ diverges
+\end{claim}
+\begin{proof}
+	Assume to contradiction that $x_n$ converges to $L$. 
+	\[ \lim_{n \rightarrow \infty} x_n = \lim_{n \rightarrow \infty} 1 - (-1)^n + \frac{1}{n} = \nifty 1 - \nifty (-1)^n + \nifty \frac{1}{n} \]
+	Since $(-1)^n$ diverges, it follows that $x_n$ diverges as well.
+\end{proof}
+
+\begin{claim}{3.4.4b}
+	The sequence $x_n=\sin(\frac{\pi n}{4})$ diverges
+\end{claim}
+\begin{proof}
+		Assume to contradiction that $x_n$ converges. 
+		Suppose $x_{n_j}$ is the subsequence of odd values in $x_n$. 
+		I claim there are two subsequences contained in $x_{n_j}$ that both converge to different values. Which would mean $x_{n_j}$ diverges.
+		Namely, the odd residue classes of $8$. Specifically, the residue classes of $1,3 \mod 8$ converge to $\frac{\sqrt{2}}{2}$ then $5,7 \mod 8$ converge to $-\frac{\sqrt{2}}{2}$. 
+		The four cases to consider are $\sin(\frac{\pi}{4})  = \frac{\sqrt{2}}{2}, \sin(\frac{3\pi}{4})  = \frac{\sqrt{2}}{2}, \sin(\frac{5\pi}{4})  = -\frac{\sqrt{2}}{2}, $ and $\sin(\frac{7\pi}{4})  = -\frac{\sqrt{2}}{2}$. We only needed to consider these cases due to the cyclic nature of the sinusoidal function. Hence, $x_{n_j}$ diverges. So it follows that our $x_n$ diverges as well contradicting our earlier assumption that it converge. 
+\end{proof}
+\newpage
+\begin{claim}{3.4.5}
+	Let $X = (x_n), Y = (y_n), Z = (z_n)$ where $z_{2n - 1} = x_n$ and $z_{2n} = y_N$. $Z$ converges if and only if $X,Y$ converge and $\lim X = \lim Y$.
+\end{claim}
+\begin{proof}
+	If $Z$ converges, then all of its subsequences converge with equal limits. Hence, $z_{2n}, z_{2n-1}$ both converges. So it follows that $x_n,y_n$ converge as well and $\lim x_n = \lim y_n = L$. Since $Y = (y_n) = (z_{2n})$ and $X = (x_n) = (z_{2n -1})$.\\
+	Next, we will show the converse is true as well.\\
+	$Suppose \lim x_n = \lim y_n = L$. 	Given $\epsilon > 0$ there exist $n_1, n_2 \in \N$ so that,
+	\[ | x_n - L | < \epsilon \quad  \forall n \geq n_1  \quad a  \]
+	\[ | y_n - L | < \epsilon  \quad \forall n \geq n_2  \quad b \] 
+	Let $n_0 = \max(n_1, n_2)$. So for all $n \geq (2n_0 + 1)$ if $n = 2k$, then $2k \geq 2 n_0$ which implies $k \geq n_0 + \frac{1}{2} > n_0 $. So if $n = 2k - 1$, then $2k - 1 \geq 2n_0 + 1$ and it follows that $k \geq n_0 + 1 \geq n_0$.\\
+	In either case, from $a,b$ we have $| x_n - L |$ and $| y_n - L |$. So for $n \geq 2n_0 + 1$ it must be true that $| z_n - L | < \epsilon$. Hence, $\lim z_n$ exits and equals $L$.
+	\\Thus, our claim holds true.
+\end{proof}
+
+\begin{claim}{3.4.11}
+	If $x_n \geq 0$ for all $n \in \N$ and that $\lim ((-1)^n x_n)$ exists, then $ ((-1)^n x_n)$ converges.
+\end{claim}
+\begin{proof}
+	Let $y_n =  ((-1)^n x_n)$ and $\lim y_n = L$. So $y_{2n} = x_2n$ and $y_{2n-1 } = -x_{2n-1}$. Note, the limits of the subsequences must be equal since $y_n$ converges. So $y_{2n} = y_{2n-1}$. But if $x_{2n} \implies y \geq 0$ and $-x_{2n-1} \leq 0 \implies y \leq 0$. Which implies that $\nifty y_n = 0$ and that for all $\epsilon > 0$, there exists a $k = k(\epsilon)$ so that if $n \neq k$, then $|y_n| = |(-1)^nx_n| = |x_n| < \epsilon$ for all $n \geq n_0$. Therefore, $x_n$ converges to $0$ and our claim holds true..
+\end{proof}
+\end{document}

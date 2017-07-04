@@ -1,0 +1,84 @@
+% Cameron Dart - Math 444 - Homework 3 - Summer 2017
+% Section 2.4: 2, 4a (first part), 4b (second part), 8 (first part)
+% Section 2.5: 3
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{enumitem} 
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+
+\newenvironment{claim}[2][Claim]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+
+\begin{document}
+	\title{Math 444 - Homework 3}
+	\author{Cameron Dart}
+	\maketitle
+
+\begin{claim}{2.4.2}
+If $S:= \left \{ \frac{1}{n} - \frac{1}{m} : m,n \in \N \right \}$, then $\sup S$ = 1 and $\inf S$ = -1
+\end{claim}
+\begin{proof}
+	First, note $0 < \frac{1}{n} \leq 1$ and $0 < \frac{1}{m} \leq 1$. 
+	It follows that,
+	\begin{align*}
+		& \frac{1}{n} - \frac{1}{m} \geq \frac{1}{n} - 1 > -1 \\
+		& \frac{1}{n} - \frac{1}{m} \leq 1 - \frac{1}{m} < 1
+	\end{align*}	
+	Thus, $-1 < \frac{1}{n} - \frac{1}{m} < 1$.
+\end{proof}
+
+	\begin{claim}{2.4.2a}
+		If $a > 0$, $aS = \left \{ as : s \in S \right\}$, then $\inf(aS) = a \inf S$
+	\end{claim}
+	\begin{proof}
+		Let $u = \sup S$ which means $s \leq u$ for all $s \in S$ and it is an upper bound of $S$. Since $a > 0$ it follows that $as \leq au$ for all $s$. Which shows that $au$ is an upper bound for $aS$, so $\sup(aS) \leq a \sup S$. \\ 
+		Now let $v = \sup(aS)$ and $as \leq v$ for all $s \in S$. Since $a > 0$, we can divide both sides by $a$ and we have $s \leq \frac{v}{a}$ for all $s$. This implies that $\frac{v}{a}$ is an upper bound of $S$ and that $a \sup S \leq v = \sup(aS)$\\
+		The result of the two inequalities is our desired result $a \sup S = \sup aS$ 
+		\end{proof}
+
+	\begin{claim}{2.4.4b}
+		Let $b < 0$ and $bS = \left \{ bs : s \in S  \right \}$
+		\begin{center}
+			$\sup(bS) = b \inf S$. Let $u = \sup S$
+		\end{center}
+	\end{claim}
+	\begin{proof}
+	%	Let $u = \sup S$ so $s \leq u$ for all $s \in S$ which means it is an upper bound of $S$. Since $b < 0$ it follows that $bs \geq bu$ for all $S$. Which shows that $bu$ a lower bound for $bS$ so $b\inf S \leq $
+		Let $x \in bS$ so $\frac{x}{b} \in S$. $\sup S \geq \frac{x}{b}$ since $\sup S$ is an upper bound for $S$. It follows, $b \sup S \leq x$ and $b \sup S$ is a lower bound for $bS$. Now let $u$ be a lower bound for $bS$. If $s \in S$, then $u \leq bs \implies \frac{u}{b} \geq s$. Thus, $\frac{u}{b}$ is an upper bound for $S$, and $\frac{u}{b} \leq \sup S$. Hence, $u \leq b \sup S$ and $b \sup S = \inf bS$   	
+		\end{proof}
+	
+		\newpage
+	
+	\begin{claim}{2.4.8}
+		Let $X$ be a nonempty set, and $f,g$ be defined on $X$ and have bounded ranges in $\R$. \\
+		\begin{center}
+		$\sup { f(x)  + g(x) : x \in X} \leq \sup {f (x) : x \in X} + \sup {g(x) : x \in X}$
+		\end{center}
+	\end{claim}
+	\begin{proof}
+		Let $u = \sup f$ and $v = \sup g$. $f(x) \leq u \text{ and } g(x)$ for all $x \in X$ by definition of supremum. $(f + g)(x) = f(x) + g(x) \leq u + v = \sup f + \sup g$. So $u + v$ is an upper bound for $f(x) + g(x)$. $u + v$ is also a supremum so $\sup \{f(x) + g(x)\} \leq \sup f + \sup g$
+	\end{proof}
+
+	\begin{claim}{2.5.3}
+		Suppose $S$ is a nonempty bounded subset of $\R$ and $I_S = [\inf S, \sup S]$.
+			\begin{enumerate}[label=(\roman*)]
+				\item $S \subseteq I_S$
+				\item If $J$ is any bounded interval containing $S$, $I_S \subseteq J$
+			\end{enumerate}	
+	\end{claim}
+	\begin{proof}
+		Let $x \in S$. Since $S$ is nonempty and bounded there exist $u = \inf S,v = \sup S$ so that $u \leq s$ and $s \leq v$ for all $s \in S$. $\inf S \leq x \leq \sup S$ by definition of infimum and supremum. It follows that $x \in [\inf S, \sup S] = I_S$ so $S \subseteq I_S$.
+	\end{proof}
+
+	\begin{proof}
+		Let $s \in I_S$. Suppose $J \subseteq [a,b]$ where $a \leq \inf S$ and $b \geq \sup S$. Since $s \in I_S$ we know $\inf S \leq s \leq \sup S$. Combining our two inequalities we get,
+		\begin{center}
+			$a \leq \inf S \leq s \leq \sup S \leq b$
+		\end{center}
+	Therefore,  $s \in J$ and it follows that $I_S \subseteq J$.
+	\end{proof}
+\end{document}

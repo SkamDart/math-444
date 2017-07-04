@@ -1,0 +1,77 @@
+% Cameron Dart - Math 444 - Homework 4 - Summer 2017
+% Section 3.1: 5b, 18
+% Section 3.2: 7, 12
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{enumitem} 
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+
+\newenvironment{claim}[2][Claim]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+
+\begin{document}
+	\title{Math 444 - Homework 4}
+	\author{Cameron Dart}
+	\maketitle
+
+\begin{claim}{3.1.5b}
+	$$\lim_{n\to\infty} \frac{2n}{n + 1} = 2$$
+\end{claim}
+\begin{proof}
+	Suppose $\epsilon > 0$. Then, 
+	\begin{equation}
+		\left | \frac{2n}{n + 1} - 2\right | = \left | \frac{2n - 2(n + 1)}{n + 1} \right | = \left | \frac{-2}{n + 1}\right | = \frac{2}{n + 1} < \frac{2}{n}
+	\end{equation}
+	Let $K \in \N$ with $K > \frac{2}{\epsilon}$. If $n \geq K$, then
+	\begin{equation}
+		n > \frac{2}{\epsilon} \implies \frac{2}{n} < \epsilon \implies \left | \frac{2n}{n + 1} - 2\right | < \epsilon
+	\end{equation}
+	Thus, $ \frac{2n}{n + 1}$ converges to $2$ by the definition of limit.
+\end{proof}
+
+\begin{claim}{3.1.18}
+	If $\lim x_n = x > 0$, then there exists $k \in \N$ so that if $n \geq k$, then $\frac{x}{2} < x_n < 2x$.
+\end{claim}
+\begin{proof}
+	Suppose $\epsilon = \frac{x}{2}$. Since $x_n \rightarrow x$, it must be true that there exists a $K \in \N$ so that if $n \geq K$, then $\left | x_n - x \right | < \epsilon$.
+	\begin{align*}
+		\left | x_n - x \right | < \epsilon & \implies -\epsilon < x_n - x < \epsilon \\
+		&\implies x - \epsilon < x_n < x + \epsilon \\
+		& \implies \frac{x}{2} < x_n < \frac{3}{2}x < 2x
+	\end{align*}
+	So for all $n \geq K$ it holds that $\frac{x}{2} < x_n < 2x$.
+\end{proof}
+
+\newpage
+\begin{claim}{3.2.7}
+	If $b_n$ is bounded and $\lim a_n = 0$, then $\lim(a_n b_n) = 0$
+\end{claim}
+\begin{proof}
+	We cannot use \textbf{Theorem 3.2.3} since it requires a function to be convergent, not bounded. A convergent sequence is always bounded but the converse is not necessarily true. As a counter example consider the sequence $(-1)^n$ for all $n \in \N$ is bounded by $[-1,1]$ but does not converge to either.\\
+	Since $b_n$ is bounded, we know that there exists some $M \in \R$ so that $|b_n| \leq M$ for all $n$. It follows that $a_nb_n \leq M|a_n|$ Let $K$ be a natural number so that $\frac{1}{K} < \frac{\epsilon}{M}$ and consider the following,
+	\begin{equation}
+		| a_nb_n - 0| = |a_nb_n = |a_n| |b_n| \leq M|a_n| < \frac{M \epsilon}{M} = \epsilon
+	\end{equation}
+	So by definition $\lim a_nb_n = 0$ for all $n \geq K$.
+\end{proof}
+
+\begin{claim}{3.2.12}
+	If $ 0 < a < b,  \lim \left ( \frac{a^{n + 1} + b^{n + 1}}{a^n + b^n} \right ) = b$
+\end{claim}
+\begin{proof}
+	\begin{align*}
+		\lim \left ( \frac{a^{n + 1} + b^{n}}{a^n + b^n} \right ) & = \frac{\lim b + a \frac{a^n}{b^n}} {\lim 1 + \frac{a^n}{b^n}}\\
+		& = \frac{b + a\lim \frac{a^n}{b^n}}{ 1 + \lim \frac{a^n}{b^n}}
+	\end{align*}
+	Now consider $\lim \frac{a^n}{b^n}$. If $0 < a < b $, then $0 < \frac{a}{b} < 1$. So $\lim 
+	\left ( \frac{a}{b} \right )^n = 0$.
+	\begin{align*}
+		\frac{b + \lim \frac{a^n}{b^n}}{ 1 + \lim \frac{a^n}{b^n}} = \frac{b + 0}{1 + 0} = b
+	\end{align*}
+	Hence, $\lim \left ( \frac{a^{n + 1} + b^{n + 1}}{a^n + b^n} \right ) = b$
+\end{proof}
+\end{document}
