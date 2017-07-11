@@ -1,0 +1,105 @@
+% Cameron Dart - Math 444 - Homework 5 - Summer 2017
+% Section 4.1: 7 (give two arguments, one based on the definition of limit and the other on the Sequential Criterion for Limits), 11b, 15
+% Section 4.2: 5, 10, 14
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{enumitem} 
+\usepackage{cancel}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\nifty}{\lim_{n \rightarrow \infty}}
+\newenvironment{claim}[2][Claim]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+
+\begin{document}
+	\title{Math 444 - Homework 4}
+	\author{Cameron Dart}
+	\maketitle
+
+\begin{claim}{4.1.7}
+	\[  \lim_{x \rightarrow c} x^3 = c^3  \]
+\end{claim}
+
+\begin{proof}
+	Given $\epsilon > 0$ we aim to find a $\delta > 0$ so that if $|x - c| < 1$ then
+	\[ -1 < x - c < 1 \implies c - 1 < x < c + 1 \]
+	It follows that, $x^2 < (c + 1) ^2 = (c^2 + 2c + 1)$ and $xc < (c + 1)c = c^2 + c$ 
+	\[ 
+	  |x^3 - c^3| = |x - c| |x^2 + xc + c^2| < | x - c | ((c^2 + 2c + 1) + (c^2 + c) + c^2) = |x - c| (3c^2 + 3c^2 + 1)
+	\]
+	Let $\delta = \inf(1, \frac{\epsilon}{(3c^2 + 3c^2 + 1)})$\\
+	\[
+	|x^3 - c^3| = |x - c| |x^2 + xc + c^2| <  \frac{\epsilon}{(3c^2 + 3c^2 + 1)}  (3c^2 + 3c^2 + 1) = \epsilon
+	\]
+	Thus, we have shown that there exists a way of choosing a $\delta(\epsilon) = \inf(1,  
+	\frac{\epsilon}{(3c^2 + 3c^2 + 1)})> 0$ for any $\epsilon > 0$, we can infer 
+	 \[ \lim_{x \rightarrow c} x^3 = c^3  \]
+\end{proof}
+
+\begin{proof}
+	Let $f: A \rightarrow \R$ so that $f(x):=x^3$. Let $x_n$ be any sequence in $A$ that converges to $c$. So by the sequence theorems we know that $x_n^3$ converges to $c^3$. Hence,
+	$\lim_{x \rightarrow c} x^3 = c^3$.
+\end{proof}
+
+\begin{claim}{4.2.11b}
+	\[
+		\lim_{x \rightarrow 6} \frac{x^2 - 3x}{x + 3} = 2
+	\]
+\end{claim}
+\begin{proof}
+	Let $f(x):= \frac{x^2 - 3x}{x + 3} $
+	\[
+		|f(x) - 2| = \left |\frac{x^2 - 3x}{x + 3} - 2 \right | = \left | \frac{(x-6)(x+1) }{(x+3)} \right | 
+	\]
+	We bound the coefficient of $|x-6|$ by the condition $5 < x < 7$. So we have,
+	\[
+	 \left |\frac{x^2 - 3x}{x + 3} - 2 \right | < \frac{4}{5} |x - 6|	
+	\]
+	Given $\epsilon > 0$, we choose $\delta(\epsilon) = \inf (1,\frac{5\epsilon}{4})$. Then if $0 < |x - 2| < \delta(\epsilon)$, we have $|f(x) - 2| \leq \frac{4}{5}|x - 6| < \epsilon$. Since $\epsilon > 0$ is arbitrary, the assertion is proved. 
+\end{proof}
+
+\begin{claim}{4.1.15}
+	If $f = \R \rightarrow \R$ be defined by setting $f(x) := x$ if $x$ is rational and $f(x) = 0$ if $x$ is irrational.
+	$f$ has a limit at $x = 0$ and if $c \neq 0$ then $f$ does not have a limit at $c$. 
+\end{claim}
+\begin{proof}
+	Given $\epsilon > 0$ choose $\delta = \delta(\epsilon) = \epsilon $ so that if $x \in A$ and $0 < |x| < \delta$ then
+	\[
+	|f(x) - 0| = |f(x)| = |x| < \epsilon \text { if x is rational, otherwise } 0 < \epsilon 
+	\]
+	Hence, $|f(x)| < \epsilon$ and the limit of $\lim_{x \rightarrow 0} f(x) = 0$ \\
+	Suppose $c \in \R$ so that $c \neq 0$. Let $x_n, y_n$ be two subsequences converging to $c$ so that $x_n \in \R - \mathbb{Q}$ and $y_n \in \mathbb{Q}$ for all $n \in \N$. So $f(x_n)$ converges to $0$ and $f(y_n)$ converges to $f(y_n)$. Hence, $\lim_{x \rightarrow c} x_n \neq \lim_{x \rightarrow c} y_n$. Thus, $f$ does not have a limit at $c$.
+\end{proof}
+
+\begin{claim}{4.2.5}
+	Let $f,g$ be defined on $A \subseteq \R \text{ to } \R$ and let $c$ be a cluster point of $A$. If $f$ is bounded on a neighborhood of $c$ and that $\lim_{x \rightarrow c} g = 0$, then $\lim_{x \rightarrow c} fg = 0$
+\end{claim}
+\begin{proof}
+	Let $x_n$ be any sequence in $A$ that converges to $c$ so that if $x_n \neq c$ for all $n \in \N$, $f(x_n) $ converges to some $L \in \R$ by the Sequential Criterion. Since $f$ is bounded on a neighborhood of $c$, there exists $M \in \R$ so that $|f(x) | \leq M$ for all $x \in A \cap V_{\delta}(c)$. Hence, $f$ is bounded by $M$. So using the limit theorems we have,
+	\[
+	\lim_{x \rightarrow c} fg = \lim_{x \rightarrow c} f \lim_{x \rightarrow c} g = L * 0 = 0
+	\] 
+	B
+\end{proof}
+
+\begin{claim}{4.2.10}
+	There exists $f,g$ such that $f$ and $g$ do not have limits at a point $c$ but so that $fg$ and $f + g$ has a limit at $c$. 	
+\end{claim}
+\begin{proof}
+	Let $f(x) = 0$ for all $x \in \mathbb{Q}$ and $f(x) = 1$ for all $x \in \R - \mathbb{Q}$. Let $g(x) = 1$ for all $x \in \mathbb{Q}$ and $g(x) = 0$ for all $x \in \R - \mathbb{Q}$. Neither $\lim_{x \rightarrow 0} f(x)$ nor $\lim_{x \rightarrow 0} g(x)$ exists. However, $fg$ and $f + g$ are both constant functions. Thus, their limits as they approach $0$ exists.
+\end{proof}
+% Section 4.1: 7 (give two arguments, one based on the definition of limit and the other on the Sequential Criterion for Limits), 11b, 15
+
+\begin{claim}{4.2.14}
+	Let $A \subseteq \R$ , $f:A \rightarrow \R$, and $c \in \R$ be a cluster point of $A$. If $\lim_{x \rightarrow c} f$ exists, then $\lim_{x \rightarrow c} |f| = \left | \lim_{x \rightarrow c} f \right |$
+\end{claim}
+\begin{proof}
+	Since $\lim_{x \rightarrow c} f(x)$ exists, it must be true that $\lim_{x \rightarrow c} f(x) = L$ for some $L \in \R$.
+	Given $\epsilon > 0$ let $\delta > 0$ so that $|f(x) - L| < \epsilon$ whenever $|x -c| < \delta $.
+	Note, for all $a,b \in \R$ it holds that $|a| \leq |a - b| +  |b| \implies |a| - |b| \leq |a - b|$.  
+	Hence, $| |f(x) | - |L| | \leq |f(x) - L | < \epsilon \implies \lim_{x \rightarrow c} |f(x)| = |L| \implies \lim_{x \rightarrow c} |f| = | \lim_{x \rightarrow c} f|$ 
+\end{proof}
+\end{document}
