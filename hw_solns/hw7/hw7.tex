@@ -44,7 +44,7 @@
 	$\lim_{x \rightarrow c} x^3 = c^3$.
 \end{proof}
 
-\begin{claim}{4.2.11b}
+\begin{claim}{4.1.11b}
 	\[
 		\lim_{x \rightarrow 6} \frac{x^2 - 3x}{x + 3} = 2
 	\]
@@ -66,7 +66,7 @@
 	$f$ has a limit at $x = 0$ and if $c \neq 0$ then $f$ does not have a limit at $c$. 
 \end{claim}
 \begin{proof}
-	Given $\epsilon > 0$ choose $\delta = \delta(\epsilon) = \epsilon $ so that if $x \in A$ and $0 < |x| < \delta$ then
+	Given $\epsilon > 0$ choose $\delta(\epsilon) = \epsilon $ so that if $x \in A$ and $0 < |x| < \delta$ then
 	\[
 	|f(x) - 0| = |f(x)| = |x| < \epsilon \text { if x is rational, otherwise } 0 < \epsilon 
 	\]
@@ -78,11 +78,10 @@
 	Let $f,g$ be defined on $A \subseteq \R \text{ to } \R$ and let $c$ be a cluster point of $A$. If $f$ is bounded on a neighborhood of $c$ and that $\lim_{x \rightarrow c} g = 0$, then $\lim_{x \rightarrow c} fg = 0$
 \end{claim}
 \begin{proof}
-	Let $x_n$ be any sequence in $A$ that converges to $c$ so that if $x_n \neq c$ for all $n \in \N$, $f(x_n) $ converges to some $L \in \R$ by the Sequential Criterion. Since $f$ is bounded on a neighborhood of $c$, there exists $M \in \R$ so that $|f(x) | \leq M$ for all $x \in A \cap V_{\delta}(c)$. Hence, $f$ is bounded by $M$. So using the limit theorems we have,
+	Let $x_n$ be any sequence in $A$ that converges to $c$ so that if $x_n \neq c$ for all $n \in \N$, $f(x_n) $ converges to some $L \in \R$ by the Sequential Criterion. Since $f$ is bounded on a neighborhood of $c$, there exists $M \in \R$ so that $|f(x) | \leq M$ for all $x \in A \cap V_{\delta}(c)$. Hence, $f$ is bounded by $M$. So using that the limit of products is the product of limits we have,
 	\[
 	\lim_{x \rightarrow c} fg = \lim_{x \rightarrow c} f \lim_{x \rightarrow c} g = L * 0 = 0
 	\] 
-	B
 \end{proof}
 
 \begin{claim}{4.2.10}
