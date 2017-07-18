@@ -1,0 +1,97 @@
+% Cameron Dart - Math 444 - Homework 9 - Summer 2017
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{enumitem} 
+\usepackage{cancel}
+\usepackage{verbatim}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\nifty}{\lim_{n \rightarrow \infty}}
+\newcommand{\I}{I:=[a,b]}
+\newcommand{\fI}{f: I \rightarrow \mathbb{R}}
+\newcommand{\gI}{g: I \rightarrow \mathbb{R}}
+\newenvironment{claim}[2][Claim]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+
+\begin{document}
+	\title{Math 444 - Homework 9}
+	\author{Cameron Dart}
+	\maketitle
+%%%%%%%%%%
+\begin{claim}{5.3.2}
+let $\I$ and let $\fI,\, \gI$  be continuous on $I$. Let $E:= \{ x \in I : f(x) = g(x)\}$. If$(x_n)\subseteq E$ and $x_n \rightarrow x_0$ then $x_0 \in E$ 
+\end{claim}
+\begin{proof}
+	Suppose $(x_n) \subseteq E$, we have $f(x_n) = g(x_n)$ for all $n$. Since $f,g$ are continuous on $I$, we can apply the SCC, 
+	\[
+		\nifty f((x_n)) = \nifty g((x_n)) \implies f(\nifty x_n) = g(\nifty x_n) \implies f(x_0) = g(x_0) \in E
+	\]
+\end{proof}
+%%%%%%%%%
+\begin{claim}{5.3.5}
+	$p(x) := x^4 + 7x^3 - 9$ has at least two real roots
+\end{claim}
+\begin{proof}
+	First, we show that $p(x)$ is continuous on $R$. 
+	If $c \in \R$, we have
+	\[
+		\lim_{x \rightarrow c} p(x) = \lim_{x \rightarrow c} x^4 + 7x^3 - 9 = c^4 + 7c^3 - 9 = p(c)
+	\]
+	Thus, $p$ is continuous on $\R$.
+	\begin{comment}
+	A formal proof using the  \epsilon \delta definition of continuity is too verbose and unnecessary
+	Given $\epsilon > 0$, we choose  $\delta(\epsilon) = \inf \{1, \frac{\epsilon}{}\} $ so that if $x,c \in \R$ and $| x - c| < \delta(\epsilon)$ then we have,
+	
+	\begin{align*}
+	|f(x) - f(c)| &= |x^4+ 7x^3 - 9 - (c^4 + 7c^3 - 9)| \\
+						&= |(x - c)(x+c)(x^2 + c^2) + 7x^3 - 7c^3| \\
+						&\leq |(x - c)(x+c)(x^2 + c^2)| + |7(x^3 - c^3)| \\
+						&\leq |x-c| |(x + c)(x^2 + c^2)| + |7(x^3 - c^3)| \\
+						&= |x-c||(2c-1)((c-1)^2 + c^2| + |7((c-1)^3 - c^3)| \\
+						&= |x-c||
+	\end{align*}
+	In order to bound the coefficient on $|x-c|$ we restrict $x$ to the following condition $|x - c| < 1$
+	\end{comment}
+	\\Now suppose $x_0 = -8$, $x_1 = 0$ and $x_2 = 2$. 
+	Calculate  $p(x_0) = 503$, $p(x_1) = -9$ and $p(x_2) = 63$. Clearly, 
+	 $p(x_0) > 0 > p(x_1)$ and $p(x_1) < 0 < p(x_2)$. So by the Location of Roots Theorem there exist two real numbers $c_1, c_2$ such that $c_1 = c_2 = 0$.
+	Hence, $p(x)$ has at least two real roots.
+\end{proof}
+
+\begin{claim}{5.3.17}
+Suppose $f: [0,1] \rightarrow \R$ is continuous and has only rational values, then $f$ is constant.
+Suppose $f: [0,1] \rightarrow \R$ is continuous and has only irrational values, then $f$ is constant.
+\end{claim}
+\begin{proof}[Rational Proof]
+	Let $x,y \in [0,1]$ and without the loss of generality suppose $f(x) \neq f(y)$ and seek a contradiction. If $f(x) \neq f(y)$, then the density theorem states there exists an irrational number $k$ so that $f(x) <  k < f(y)$. But $f$ is continuous and by the Bolzano Intermediate Value Theorem there must exist some $m \in [0,1]$ so that $f(m) = k$. However, this contradicts our assumption that $f$ only takes on rational numbers. So it must be true that $f$ is a constant function.
+\end{proof}
+\begin{proof}[Irrational Proof]
+	A similar proof to the rational follows for an irrational $f$. Let $x,y \in [0,1]$ and suppose $f(x) \neq f(y)$. Since $f(x) \neq f(y)$, then there exists a rational number $k$ in  $f(x) < k < f(y)$ by the density theorem. Hence, by the continuity of $f$ and the Bolzano Intermediate Value Theorem, $f$ takes a rational value at some point in $[0,1]$. Thus, we have arrived at our contradiction and $f$ must be constant.
+\end{proof}
+
+\begin{claim}{5.4.9}
+	If $f$ is uniformly continuous on $A \subseteq \R$, and $|f(x)| \geq k > 0$ for all $x \in A$, then $1/f$ is continuous.
+\end{claim}
+\begin{proof}
+	Given $\epsilon > 0$ and $u \in A$ choose $\delta(\epsilon, u)$ so that if $x \in A$ and $| x - u| < \delta(\epsilon, u)$, then $|f(x) - f(u)| < k^2 \epsilon$ 
+	\[
+		\left | \frac{1}{f(x)} - \frac{1}{f(u)} \right | = \left |\frac{f(x) - f(u)}{f(x)f(u)} \right | \leq \left | \frac{f(x) - f(u)}{k^2} \right |  < \frac{k^2 \epsilon}{k^2} = \epsilon
+	\]
+	Hence, $1/f$ is uniformly continuous on $A$.
+\end{proof}
+\begin{claim}{5.4.10}
+	If $f$ is uniformly continuous on a bounded subset $A$ of $\R$, then $f$ is bounded on $A$. 
+\end{claim}
+\begin{proof}
+	Suppose $f$ is not bounded on $A$ and seek contradiction. Since $f$ is not bounded there exists a sequence $x_n \in A$ so that $\lim_{n \rightarrow \infty} f(x_n) = \infty$. But $A$ is bounded so by Bolzano-Weirstrass it has  a convergence subsequence $x_{i_n}$. Since it is convergent, it is Cauchy but the Cauchy Criterion. It follows by \textbf{Theorem 5.4.7} that $f(x_{i_n})$ is also Cauchy. Hence, $f(x_{i_n})$ is bounded. Thus, we have arrived at a contradiction since $\lim_{n \rightarrow \infty} f(x_n) = \infty$ but must be bounded since $f(x_{i_n})$ is bounded. 
+\end{proof}
+\begin{claim}{5.4.12}
+	If $f$ is continuous on $[0, \infty)$ and uniformly continuous on $[a, \infty)$ for some positive constant $a$, then $f$ is uniformly continuous.
+\end{claim}
+\begin{proof}
+	Consider $[0,a]$ a closed bounded interval on $\R$. Since $f$ is continuous on $[0, \infty)$, it is continuous on $[0, a]$ because $a < \infty$. It follows by the Uniform Continuity Theorem, $f$ must be uniformly continuous on the closed bounded interval $[0, a]$. If $[0, a]$ and $[a, \infty)$, it implies that $f$ is uniformly continuous on $[0, \infty)$
+\end{proof}
+\end{document}
